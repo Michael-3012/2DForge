@@ -66,3 +66,16 @@ vcpkg_installed/
 # test output & cache
 Testing/
 .cache/
+
+# AI Slop
+CLAUDE.md
+CLAUDE.local.md
+AGENTS.md
+AGENT.md
+GEMINI.md
+.claude/
+.cursor/
+.cursorrules
+.windsurfrules
+.clinerules
+.github/copilot-instructions.md
