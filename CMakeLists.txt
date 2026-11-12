@@ -11,9 +11,19 @@ project(
 
 add_executable(2DForge)
 
+if(MSVC)
+    target_compile_options(
+        2DForge PRIVATE /W4
+    )
+else()
+    target_compile_options(
+        2DForge PRIVATE -Wall -Wextra -Wpedantic
+    )
+endif()
+
 find_package(SDL2 CONFIG REQUIRED)
-target_link_libraries(2DForge
-    PRIVATE
+target_link_libraries(
+    2DForge PRIVATE
     $<TARGET_NAME_IF_EXISTS:SDL2::SDL2main>
     $<IF:$<TARGET_EXISTS:SDL2::SDL2>,SDL2::SDL2,SDL2::SDL2-static>
 )
