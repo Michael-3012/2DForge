@@ -10,7 +10,7 @@ The goal is to create a modular, performant and extensible 2D game engine while 
 
 **Planned features:**
 
-- [ ] Window management
+- [x] Window management
 - [ ] Input handling
 - [ ] 2D rendering
 - [ ] Sprite rendering
