@@ -1,4 +1,5 @@
 #include "Application.h"
+#include <iostream>
 
 TwoDForge::Application::Application()
     : window("2DForge", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 800, 600, SDL_WINDOW_OPENGL)
@@ -25,6 +26,6 @@ void TwoDForge::Application::run()
     }
 }
 
-TwoDForge::Application::~Application() {
-    
+TwoDForge::Application::~Application() 
+{    
 }

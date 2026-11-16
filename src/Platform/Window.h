@@ -9,6 +9,11 @@ namespace TwoDForge
         public:
             Window(const char* title, int posX, int posY, int w, int h, Uint32 flags) 
             {
+                if (SDL_InitSubSystem(SDL_INIT_VIDEO) < 0) 
+                {
+                    throw std::runtime_error(SDL_GetError());
+                }
+
                 SDL_GL_SetAttribute(SDL_GL_CONTEXT_MAJOR_VERSION, 3);
                 SDL_GL_SetAttribute(SDL_GL_CONTEXT_MINOR_VERSION, 3);
                 SDL_GL_SetAttribute(SDL_GL_CONTEXT_PROFILE_MASK, SDL_GL_CONTEXT_PROFILE_CORE);
@@ -16,7 +21,9 @@ namespace TwoDForge
                 window = SDL_CreateWindow(title, posX, posY, w, h, flags);
                 if (window == nullptr) 
                 {
-                    throw std::runtime_error(SDL_GetError());
+                    std::runtime_error error(SDL_GetError());
+                    SDL_QuitSubSystem(SDL_INIT_VIDEO);
+                    throw error;
                 }
 
                 context = SDL_GL_CreateContext(window);
@@ -24,6 +31,7 @@ namespace TwoDForge
                 {
                     std::runtime_error error(SDL_GetError());
                     SDL_DestroyWindow(window);
+                    SDL_QuitSubSystem(SDL_INIT_VIDEO);
                     throw error;
                 }
             }
@@ -37,6 +45,7 @@ namespace TwoDForge
             {
                 SDL_GL_DeleteContext(context);
                 SDL_DestroyWindow(window);
+                SDL_QuitSubSystem(SDL_INIT_VIDEO);
             }
 
             Window (const Window&) = delete;
