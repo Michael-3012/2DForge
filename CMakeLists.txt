@@ -31,6 +31,7 @@ target_link_libraries(
 target_sources(2DForge
     PRIVATE
         src/main.cpp
+        src/Core/Application.cpp
 )
 
 

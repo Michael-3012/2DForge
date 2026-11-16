@@ -28,11 +28,20 @@ namespace TwoDForge
                 }
             }
 
+            void swapBuffer() 
+            {
+                SDL_GL_SwapWindow(window);
+            }
+
             ~Window() 
             {
                 SDL_GL_DeleteContext(context);
                 SDL_DestroyWindow(window);
             }
+
+            Window (const Window&) = delete;
+            Window& operator= (const Window&) = delete;
+            
         private:
             SDL_Window* window = nullptr;
             SDL_GLContext context = nullptr;
