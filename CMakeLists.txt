@@ -32,6 +32,7 @@ target_sources(2DForge
     PRIVATE
         src/main.cpp
         src/Core/Application.cpp
+        src/Platform/Input.cpp
 )
 
 

@@ -1,5 +1,6 @@
 #pragma once
 #include "../Platform/Window.h"
+#include "../Platform/Input.h"
 
 namespace TwoDForge 
 {
@@ -7,6 +8,7 @@ namespace TwoDForge
     {
     private:
         Window window;
+        Input input;
     public:
         Application();
 
