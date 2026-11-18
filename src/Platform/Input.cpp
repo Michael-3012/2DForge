@@ -1,6 +1,5 @@
 #include "Input.h"
 #include <stdexcept>
-#include <iostream>
 
 TwoDForge::Input::Input() 
 {
