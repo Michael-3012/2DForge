@@ -1,5 +1,6 @@
 #include "Input.h"
 #include <stdexcept>
+#include <iostream>
 
 TwoDForge::Input::Input() 
 {
@@ -19,8 +20,18 @@ void TwoDForge::Input::eventPoller()
             case SDL_QUIT:
                 applicationRunning = false;
                 break;
+            case SDL_KEYDOWN:
+                TwoDForge::Input::keysPressed[event.key.keysym.scancode] = true;
+                break;
+            case SDL_KEYUP:
+                TwoDForge::Input::keysPressed[event.key.keysym.scancode] = false;
+                break;
         }
     }
+}
+
+bool TwoDForge::Input::isPressed(SDL_Scancode key) {
+    return TwoDForge::Input::keysPressed[key];
 }
 
 bool TwoDForge::Input::checkStatus() 
